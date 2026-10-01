@@ -1,16 +1,17 @@
 import express from "express";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { initDiscordBot } from "./src/bots/DiscordBot.js";
-import { initTwitchBot } from "./src/bots/TwitchBot.js";
+import { initDiscordBot } from "./src/bots/FinalsRoulette/DiscordBot.js";
+import { initTwitchBot } from "./src/bots/Vibebot/TwitchBot.js";
 import { PORT, ENABLE_EVENTSUB_WEBHOOKS } from "./src/config/env.js";
 import { getStreamerChannels } from "./src/db/queries.js";
 import cookieParser from "cookie-parser";
 import { registerTwitchAuthRoutes } from "./src/routes/twitchAuth.js";
 import { saveToken } from "./src/db/queries.js";
-import { generateRandomLoadout } from "./src/data/loadoutGenerator.js";
-import { formatForTwitch } from "./src/utils/formatters.js";
-
+import { createRouletteFeature } from "./src/bots/FinalsRoulette/twitchFeature.js";
+const features = [
+  createRouletteFeature({ redemptionTitle: process.env.TWITCH_REDEMPTION_TITLE }),
+];
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const clientDist = path.join(__dirname, "client", "dist");
 
@@ -33,20 +34,17 @@ const twitchBot = await initTwitchBot({
   clientSecret: process.env.TWITCH_CLIENT_SECRET,
   channels,
   channelIds,
-  redemptionTitle: process.env.TWITCH_REDEMPTION_TITLE,
   expressApp: app,
   webhookSecret: process.env.TWITCH_WEBHOOK_SECRET,
+  features,
 });
 
 registerTwitchAuthRoutes(app, {
   authProvider: twitchBot.authProvider,
   apiClient: twitchBot.apiClient,
   chatClient: twitchBot.chatClient,
-  eventSub: twitchBot.eventSub,
+  subscribeChannel: twitchBot.subscribeChannel,
   saveToken,
-  redemptionTitle: process.env.TWITCH_REDEMPTION_TITLE,
-  generateRandomLoadout,
-  formatForTwitch,
 });
 
 // (Track B routes will go here — between bot init and static/fallback)
