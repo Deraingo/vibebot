@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: finals-roulette-bot
+    name: vibebot
     env: node
     region: oregon
     plan: free

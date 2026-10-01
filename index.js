@@ -21,7 +21,7 @@ app.use((req, res, next) => {
   next();
 });
 app.get("/health", (req, res) => {
-  res.send("Finals Roulette Bot is running!");
+  res.send("Vibebot is running!");
 });
 
 const streamers = await getStreamerChannels();
