@@ -65,4 +65,4 @@ app.listen(PORT, async () => {
   }
 });
 
-// initDiscordBot(process.env.DISCORD_TOKEN);
+initDiscordBot(process.env.DISCORD_TOKEN);
