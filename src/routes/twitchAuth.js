@@ -1,5 +1,5 @@
 import { randomUUID, createHmac, timingSafeEqual } from "node:crypto";
-import { TWITCH_REDIRECT_URI, SESSION_SECRET, IS_PROD } from "../config/env.js";
+import { TWITCH_REDIRECT_URI, SESSION_SECRET, IS_PROD, ENABLE_EVENTSUB_WEBHOOKS } from "../config/env.js";
 const STATE_COOKIE = "twitch_oauth_state";
 const STATE_TTL_MS = 10 * 60 * 1000;
 
@@ -24,11 +24,8 @@ export function registerTwitchAuthRoutes(app, {
   authProvider,
   apiClient,
   chatClient,
-  eventSub,
+  subscribeChannel,
   saveToken,
-  redemptionTitle,
-  generateRandomLoadout,
-  formatForTwitch,
 }) {
   console.log("DEBUG: registerTwitchAuthRoutes called");
   app.get("/auth/twitch/login", (req, res) => {
@@ -75,12 +72,8 @@ export function registerTwitchAuthRoutes(app, {
       const token = await authProvider.getAccessTokenForUser(userId);
       await saveToken(userId, user.name, token, false);
       await chatClient.join(user.name);
-      await eventSub.onChannelRedemptionAdd(userId, (event) => {
-        if (event.rewardTitle === redemptionTitle) {
-          const loadout = generateRandomLoadout();
-          chatClient.say(user.name, formatForTwitch(loadout));
-        }
-      });
+      if (ENABLE_EVENTSUB_WEBHOOKS) await subscribeChannel(userId, user.name)
+      
 
       res.redirect(`/?bot_added=success&channel=${encodeURIComponent(user.name)}`);
     } catch (err) {
