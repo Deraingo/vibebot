@@ -9,8 +9,10 @@ import cookieParser from "cookie-parser";
 import { registerTwitchAuthRoutes } from "./src/routes/twitchAuth.js";
 import { saveToken } from "./src/db/queries.js";
 import { createRouletteFeature } from "./src/bots/FinalsRoulette/twitchFeature.js";
+import { quoteFeature } from "./src/commands/quote.js";
 const features = [
   createRouletteFeature({ redemptionTitle: process.env.TWITCH_REDEMPTION_TITLE }),
+  quoteFeature
 ];
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const clientDist = path.join(__dirname, "client", "dist");
@@ -63,4 +65,4 @@ app.listen(PORT, async () => {
   }
 });
 
-initDiscordBot(process.env.DISCORD_TOKEN);
+// initDiscordBot(process.env.DISCORD_TOKEN);

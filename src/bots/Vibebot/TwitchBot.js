@@ -3,6 +3,7 @@ import { EventSubMiddleware } from "@twurple/eventsub-http";
 import { ChatClient } from "@twurple/chat";
 import { buildAuthProvider } from "../../auth/twitchAuth.js";
 import { PUBLIC_HOST } from "../../config/env.js";
+import { parseCommand } from "./commandRouter.js";
 export async function initTwitchBot(config) {
   const {
     clientId,
@@ -33,6 +34,33 @@ export async function initTwitchBot(config) {
   });
 
   await eventSub.apply(expressApp);
+  const chatCommands = new Map();
+  for (const feature of features) {
+    for (const [commandName, handler] of Object.entries(feature.chatCommands ?? {})) {
+      if (chatCommands.has(commandName)) throw new Error(`Two features claim !${commandName}`);
+      chatCommands.set(commandName, handler);
+    }
+  }
+
+  chatClient.onMessage(async (channel, user, text, msg) => {
+    const parsed = parseCommand(text);
+    if (!parsed) return;
+    const handler = chatCommands.get(parsed.command);
+    if (!handler) return;
+
+    try {
+      const reply = await handler({
+        channelId: msg.channelId,
+        userName: user,
+        isMod: msg.userInfo.isMod || msg.userInfo.isBroadcaster,
+        args: parsed.args,
+        argsText: parsed.argsText,
+      });
+      if (reply) await chatClient.say(channel, reply, { replyTo: msg });
+    } catch (error) {
+      console.error(`❌ !${parsed.command} failed in ${channel}:`, error);
+    }
+  });
   await chatClient.connect();
 
   console.log(`✅ Twitch bot connected`);

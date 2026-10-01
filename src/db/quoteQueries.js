@@ -1,4 +1,4 @@
-import { getPool } from "./index"
+import { getPool } from "./index.js"
 const UNIQUE_VIOLATION="23505"
 const MAX_INSERT_ATTEMPTS = 3;
 
