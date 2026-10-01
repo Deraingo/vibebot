@@ -2,7 +2,7 @@
 
 **Last updated:** October 2025
 
-Welcome to the Finals Roulette Bot (“the Bot”). By using this Bot, you agree to the following terms:
+Welcome to the Vibebot (“the Bot”). By using this Bot, you agree to the following terms:
 
 1. **Usage**
    - This Bot is provided for entertainment and informational purposes only.
