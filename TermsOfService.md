@@ -14,7 +14,7 @@ Welcome to the Vibebot (“the Bot”). By using this Bot, you agree to the foll
 
 3. **User Data**
    - The Bot does not intentionally collect personal information.
-   - Any data processed is limited to information provided through Discord (e.g., usernames, messages).
+   - Any data processed is limited to information provided through Discord or Twitch (e.g., usernames, messages).
 
 4. **Liability**
    - The Bot is provided “as is” without warranty of any kind.
