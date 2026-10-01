@@ -1,4 +1,4 @@
-const COMMAND_PREFIX = "!";
+const COMMAND_PREFIX = "?";
 
 export function parseCommand(messageText) {
   if (typeof messageText !== "string") return null;

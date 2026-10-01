@@ -9,15 +9,15 @@ test("non-commands return null", () => {
 });
 
 test("command is lowercased", () => {
-  assert.equal(parseCommand("!QUOTE 3").command, "quote");
+  assert.equal(parseCommand("?QUOTE 3").command, "quote");
 });
 
 test("argsText keeps the original inner spacing", () => {
-  const parsed = parseCommand("!quote add   lots   of  spaces");
+  const parsed = parseCommand("?quote add   lots   of  spaces");
   assert.deepEqual(parsed.args, ["add", "lots", "of", "spaces"]);
   assert.equal(parsed.argsText, "add   lots   of  spaces");
 });
 
 test("no args gives an empty list", () => {
-  assert.deepEqual(parseCommand("!quote").args, []);
+  assert.deepEqual(parseCommand("?quote").args, []);
 });
