@@ -4,7 +4,7 @@ export const classes = {
                 "M26 Matter", "Recurve Bow", "Sh1900", "Sr-84", 
                 "Sword", "Throwing Knives", "V9S", "Xp-54"],
         abilities: ["Evasive Dash", "Grappling Hook", "Cloaking Device", "True Sight"],
-        equipment: ["Breaching Charge", "Gateway", "Glitch Grenade", "Gravity Vortex", "Translocator", "Mimic Device"
+        equipment: ["Breaching Charge", "Gateway", "Glitch Grenade", "Gravity Vortex", "Translocator", "Mimic Device",
             "H+ Infuser", "Sonar Grenade", "Nullifier", "Thermal Bore",  
             "Tracking Dart", "Vanish Bomb", "Frag Grenade", "Flash Bang", 
             "Gas Grenade", "Goo Grenade", "Pyro Grenade", "Smoke Grenade"] 
