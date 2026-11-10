@@ -3,9 +3,8 @@ export const classes = {
         weapons: ["93R", "ARN-220", "Dagger", "Lh1", "M11", 
                 "M26 Matter", "Recurve Bow", "Sh1900", "Sr-84", 
                 "Sword", "Throwing Knives", "V9S", "Xp-54"],
-        abilities: ["Evasive Dash", "Grappling Hook", "Cloaking Device"],
-        equipment: ["Breaching Charge", "Gateway", "Glitch Grenade", "Gravity Vortex", 
-            // "Thermal Vision",
+        abilities: ["Evasive Dash", "Grappling Hook", "Cloaking Device", "True Sight"],
+        equipment: ["Breaching Charge", "Gateway", "Glitch Grenade", "Gravity Vortex", "Translocator", "Mimic Device"
             "H+ Infuser", "Sonar Grenade", "Nullifier", "Thermal Bore",  
             "Tracking Dart", "Vanish Bomb", "Frag Grenade", "Flash Bang", 
             "Gas Grenade", "Goo Grenade", "Pyro Grenade", "Smoke Grenade"] 
@@ -28,7 +27,7 @@ export const classes = {
         weapons: [".50 Akimbo", "BFR Titan", "Flamethrower", 
                     "KS-23", "Lewis Gun", "M134 Minigun", 
                     "M60", "MGL32", "SA1216", "Shak50", 
-                    "SledgeHammer", "Spear", "BFR Titan"
+                    "SledgeHammer", "Spear"
                 ],
         abilities: ["Charge 'N' Slam", "Shield", "Googun", "Winch Claw"],
         equipment: ["Anti-gravity Cube", "Barricade", 
