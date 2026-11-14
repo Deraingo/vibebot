@@ -1,6 +1,6 @@
 import { Client, GatewayIntentBits } from "discord.js";
-import { sendLoadout } from "../commands/roulette.js";
-import { sendHelp } from "../commands/help.js";
+import { sendLoadout } from "../../commands/roulette.js";
+import { sendHelp } from "../../commands/help.js";
 export function initDiscordBot(discord_token) {
   const client = new Client({
     intents: [

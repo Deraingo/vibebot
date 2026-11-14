@@ -2,7 +2,7 @@
 
 **Last updated:** October 2025
 
-The Finals Roulette Bot (“the Bot”) values your privacy. This policy explains what data is (and isn’t) collected.
+The Vibebot (“the Bot”) values your privacy. This policy explains what data is (and isn’t) collected.
 
 ## Information Collected
 - The Bot does **not** collect or store personal user data.

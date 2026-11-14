@@ -1,12 +1,12 @@
 {
-  "name": "finals-roulette-bot",
+  "name": "vibebot",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --test"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +19,7 @@
     "@twurple/eventsub-base": "^7.4.0",
     "@twurple/eventsub-http": "^7.4.0",
     "@twurple/pubsub": "^7.4.0",
+    "cookie-parser": "^1.4.7",
     "discord.js": "^14.23.2",
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
