@@ -1,6 +1,10 @@
+import {
+  TWITCH_REDIRECT_URI,
+  SESSION_SECRET,
+  IS_PROD,
+} from "../config/env.js";
 import { RefreshingAuthProvider } from "@twurple/auth";
 import { saveToken, getAllTokens } from "../db/queries.js";
-import { TWITCH_REDIRECT_URI } from "../config/env.js";
 
 export async function buildAuthProvider({ clientId, clientSecret}) {
   const authProvider = new RefreshingAuthProvider({
